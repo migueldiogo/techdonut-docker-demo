@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:latest
+
+  app:
+    build:
+      context: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo
+    environment:
+      SPRING_DATA_MONGODB_HOST: mongo
+    command: /app/gradlew bootRun

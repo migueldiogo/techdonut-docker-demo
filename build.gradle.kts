@@ -17,8 +17,7 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.springframework.data:spring-data-redis")
-	implementation("redis.clients:jedis:3.2.0")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -36,4 +35,10 @@ tasks.withType<KotlinCompile> {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "1.8"
 	}
+}
+
+tasks.register<Copy>("downloadDependenciesForDocker") {
+	from(sourceSets.main.get().runtimeClasspath)
+	from(sourceSets.test.get().runtimeClasspath)
+	into(buildDir)
 }

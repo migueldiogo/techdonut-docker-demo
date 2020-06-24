@@ -1,10 +1,10 @@
 package com.talkdesk.techdonut.dockerdemo.repositories
 
 import com.talkdesk.techdonut.dockerdemo.models.Talkdesker
+import org.springframework.data.mongodb.repository.MongoRepository
 
-import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 
 @Repository
-interface TalkdeskerRepository : CrudRepository<Talkdesker, String>
+interface TalkdeskerRepository : MongoRepository<Talkdesker, String>
